@@ -1,31 +1,33 @@
-# lhd-hooks
+# LHD HOOKS
 
-> set of react hooks ready for usage.
+LHD HOOKS is a set of react hooks ready for usage.
 
-[![NPM](https://img.shields.io/npm/v/lhd-hooks.svg)](https://www.npmjs.com/package/lhd-hooks) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+  - install
+  - import
+  - use!
 
-## Install
+### Installation
 
-```bash
-npm install --save lhd-hooks
+LHD HOOKS requires [react](https://reactjs.org/) v16.8.0+ to run.
+
+Install LHD HOOKS with [npm](https://www.npmjs.com).
+
+```sh
+$ cd my-project
+$ npm install lhd-hooks
 ```
 
-## Usage
+import hook in components:
 
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'lhd-hooks'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+```sh
+import {useSwipe} from 'lhd-hooks';
 ```
 
-## License
 
-MIT © [lhd555](https://github.com/lhd555)
+# Contribution
+You can also help by:
+  - Add new hooks.
+  - Suggest hook ideas.
+  - Improve existing hooks.
+
+Feel free to contribute.
