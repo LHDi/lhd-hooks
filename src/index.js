@@ -1,22 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import useOnClickOutside from './hooks/useOnClickOutside'
+import useSwipe from './hooks/useSwipe'
+import useScrollAnimation from './hooks/useScrollAnimation'
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+export {
+  useOnClickOutside,
+  useSwipe,
+  useScrollAnimation
 }
