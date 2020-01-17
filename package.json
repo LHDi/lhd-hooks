@@ -1,6 +1,6 @@
 {
   "name": "lhd-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "set of react hooks ready for usage.",
   "main": "dist/index.js",
   "scripts": {
