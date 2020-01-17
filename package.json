@@ -1,0 +1,45 @@
+{
+  "name": "lhd-hooks",
+  "version": "1.0.0",
+  "description": "set of react hooks ready for usage.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"start": "webpack-dev-server --mode development",
+		"transpile": "babel src -d dist --copy-files",
+		"prepublishOnly": "npm run transpile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhd555/lhd-hooks.git"
+  },
+  "keywords": [
+    "use-hooks"
+  ],
+  "author": "lhd555",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhd555/lhd-hooks/issues"
+  },
+  "homepage": "https://github.com/lhd555/lhd-hooks#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+	},
+	"peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  }
+}
