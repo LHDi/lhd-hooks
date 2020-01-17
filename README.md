@@ -22,7 +22,8 @@ import hook in components:
 ```sh
 import {useSwipe} from 'lhd-hooks';
 ```
-
+[demo](https://lhd555.github.io/lhd-hooks/)
+use the mobile version!
 
 # Contribution
 You can also help by:

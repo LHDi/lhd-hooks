@@ -5,9 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"start": "webpack-dev-server --mode development",
-		"transpile": "babel src -d dist --copy-files",
-		"prepublishOnly": "npm run transpile"
+    "start": "webpack-dev-server --mode development",
+    "transpile": "babel src -d dist --copy-files",
+		"prepublishOnly": "npm run transpile",
+		"build": "webpack --mode production",
+    "deploy": "gh-pages -d examples/dist",
+    "publish-demo": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^3.4.2",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -37,8 +41,8 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-	},
-	"peerDependencies": {
+  },
+  "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   }
