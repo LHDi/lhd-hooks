@@ -1,0 +1,72 @@
+.container {
+	max-width: 100%;
+	padding: .2em;
+	margin: .1em;
+	background: #95a5a6aa;
+	border-radius: 0px 4px 4px 0px;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	z-index: 1000;
+	transition: .5s all ease-out
+}
+.collapse svg{
+	color: #fff;
+	background: #95a5a688;
+	border-radius: 0px 4px 4px 0px;
+	font-size: 2em;
+	font-family: cursive;
+	font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%);
+	border-left: 1px inset;
+	cursor: pointer;
+}
+
+.Select {
+	background: #ffffff00;
+	color: #fff;
+	display: flex;
+	height: 1.8em;
+	font-size: .9em;
+	line-height: 1.8em;
+	align-items: center;
+	padding: .2em;
+	justify-content: space-evenly;
+	align-content: space-evenly;
+}
+.Option {
+	background: #34495e;
+	padding: 0.1em;
+	margin: .2em;
+	border-radius: 3px;
+	box-shadow: 0px 0px 2px 0px;
+}
+.Selected {
+	background: #16a085
+}
+
+.Open {
+	transform: translateX(0);
+}
+.Close {
+	transform: translateX(-100%);
+}
+
+.svg {
+	width: 1em;
+	height: 1em;
+}
+
+.svg path,
+.svg polygon,
+.svg rect {
+  fill: #fff;
+}
+
+.svg circle {
+  stroke: #fff;
+  stroke-width: 1;
+}
