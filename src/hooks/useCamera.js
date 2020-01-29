@@ -92,6 +92,7 @@ const useCamera = () => {
 			}
 		};
 		getCameraList();
+		return reset;
 	}, [permitted]);
 
 	useEffect(() => {
@@ -120,6 +121,7 @@ const useCamera = () => {
 			};
 		};
 		getCameraPermission();
+		return reset;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCameraId, cameraList.length]);
 

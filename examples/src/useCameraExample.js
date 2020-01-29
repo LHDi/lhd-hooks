@@ -1,6 +1,8 @@
-import React, {useRef, useState, useLayoutEffect} from 'react';
+import React, {useRef, useState, useLayoutEffect, useEffect} from 'react';
 import useCamera from '../../src/hooks/useCamera';
 import Style from './css/cameraControle.module.css';
+import useLoadingPercentage from '../../src/hooks/useLoadingPercentage';
+
 
 const Select = ({children, onChange, value}) => {
 	const [valueState, setValueState] = useState(value);
