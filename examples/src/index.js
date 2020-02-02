@@ -4,13 +4,45 @@ import {Switch, Route, BrowserRouter, Link, HashRouter, useParams} from 'react-r
 import "@babel/polyfill";
 import UseSizeExample from './useSizeExample';
 import UseCameraExample from './useCameraExample';
+import UseSwipeExample from './useSwipeExample';
 import useLoadingPercentage from '../../src/hooks/useLoadingPercentage';
 
+const style = {
+	topNav : {
+		position: 'absolute',
+		zIndex: 99,
+		left: 0,
+		top: 0,
+		width: '100%',
+		background: '#fff',
+		boxShadow: '0 0 5px 0px #c77cff',
+		transition: '.2s all ease-out'
+	},
+	trigger : {
+		position: 'absolute',
+    top: '100%',
+    left: '50%',
+    background: '#fff',
+    padding: '5px 10px',
+    borderRadius: '50%',
+    transform: 'translate(-50%, -50%)',
+		boxShadow: 'rgb(199, 124, 255) 0px 5px 15px -5px',
+		color: '#000000c7',
+		cursor: 'pointer'
+	},
+	close : {
+		transform: 'translateY(-90%)'
+	}
+}
+
 const Nav = () => {
+	const [open, setOpen] = useState(false);
 	return (
-		<nav>
-			<li><Link to="/useSize">useSize</Link></li>
-			<li><Link to="/useCamera">useCamera</Link></li>
+		<nav style={Object.assign({}, style.topNav, !open&&style.close)}>
+			<Link to="/useSize">useSize</Link>
+			<Link to="/useCamera">useCamera</Link>
+			<Link to="/useSwipe">useSwipe</Link>
+			<span onClick={() => setOpen(!open)} style={style.trigger}>&#9661;</span>
 		</nav>
 	)
 }
@@ -25,7 +57,7 @@ const UseExample = () => {
 		<React.Fragment>
 			{
 				!loaded&&
-				<div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '3px', background: '#eee'}}>
+				<div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '3px', background: '#eee', zIndex: 100}}>
 					<div style={{position: 'absolute', top: 0, transition: '.1s all ease-out', right: `${100 - percentage}%`, width: '100%', height: '3px', background: '#ff5200'}}></div>
 				</div>
 			}
@@ -35,6 +67,8 @@ const UseExample = () => {
 						return <UseCameraExample />
 					case 'useSize':
 						return <UseSizeExample />
+					case 'useSwipe':
+						return <UseSwipeExample />
 					default:
 						return null;
 				}

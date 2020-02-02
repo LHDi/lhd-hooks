@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import { useSwipe } from '../../src';
 
 const UseSwipeExample = () => {
 	const swipedElement = useRef(null);
