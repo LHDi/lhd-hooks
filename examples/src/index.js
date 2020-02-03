@@ -1,10 +1,12 @@
 import React, {useRef, useEffect, useState} from 'react';
 import { render} from 'react-dom';
-import {Switch, Route, BrowserRouter, Link, HashRouter, useParams} from 'react-router-dom';
+import {Switch, Route, Link, HashRouter, useParams} from 'react-router-dom';
 import "@babel/polyfill";
 import UseSizeExample from './useSizeExample';
 import UseCameraExample from './useCameraExample';
 import UseSwipeExample from './useSwipeExample';
+import UseLocalStorageExample from './useLocalStorageExample';
+
 import useLoadingPercentage from '../../src/hooks/useLoadingPercentage';
 
 const style = {
@@ -42,6 +44,7 @@ const Nav = () => {
 			<Link to="/useSize">useSize</Link>
 			<Link to="/useCamera">useCamera</Link>
 			<Link to="/useSwipe">useSwipe</Link>
+			<Link to="/useLocalStorage">useLocalStorage</Link>
 			<span onClick={() => setOpen(!open)} style={style.trigger}>&#9661;</span>
 		</nav>
 	)
@@ -69,6 +72,8 @@ const UseExample = () => {
 						return <UseSizeExample />
 					case 'useSwipe':
 						return <UseSwipeExample />
+					case 'useLocalStorage':
+						return <UseLocalStorageExample />
 					default:
 						return null;
 				}
