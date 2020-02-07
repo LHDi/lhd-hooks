@@ -8,6 +8,7 @@ import UseSwipeExample from './useSwipeExample';
 import UseLocalStorageExample from './useLocalStorageExample';
 
 import useLoadingPercentage from '../../src/hooks/useLoadingPercentage';
+import UseFormStateExample from './useFormStateExample';
 
 const style = {
 	topNav : {
@@ -45,6 +46,7 @@ const Nav = () => {
 			<Link to="/useCamera">useCamera</Link>
 			<Link to="/useSwipe">useSwipe</Link>
 			<Link to="/useLocalStorage">useLocalStorage</Link>
+			<Link to="/useFormState">useFormState</Link>
 			<span onClick={() => setOpen(!open)} style={style.trigger}>&#9661;</span>
 		</nav>
 	)
@@ -74,6 +76,8 @@ const UseExample = () => {
 						return <UseSwipeExample />
 					case 'useLocalStorage':
 						return <UseLocalStorageExample />
+					case 'useFormState':
+						return <UseFormStateExample />
 					default:
 						return null;
 				}
