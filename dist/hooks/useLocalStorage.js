@@ -51,8 +51,8 @@ var useLocalStorage = function useLocalStorage(name) {
 		store.current = storeObject;
 		setReady(true);
 	}, []);
-	if (ready) return [value, store.current.set, store.current.remove];
-	return [null, {}];
+	if (ready) return { value: value, set: store.current.set, remove: store.current.remove, ready: ready };
+	return { ready: ready };
 };
 
 exports.default = useLocalStorage;

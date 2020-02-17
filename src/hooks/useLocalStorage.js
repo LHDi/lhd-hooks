@@ -28,8 +28,8 @@ const useLocalStorage = (name) => {
 		setReady(true);
 	},[])
 	if(ready)
-		return {value, set: store.current.set, remove: store.current.remove, ready: true};
-	return {ready: false};	
+		return {value, set: store.current.set, remove: store.current.remove, ready};
+	return {ready};	
 }
 
 export default useLocalStorage;
