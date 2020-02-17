@@ -14,6 +14,12 @@ var _useSwipe2 = _interopRequireDefault(_useSwipe);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ *	useScrollAnimation scroll one page at a time, every page takes the full height of the container
+ *	if no params was passed the hook will use the body
+ * @param {React.ref} ref - the reference to the element
+ * @returns {Array<number, function>} ReturnedArray = [index {number}, scrollTo {function}]
+ */
 var useScrollAnimation = function useScrollAnimation(ref) {
 	var scrolling = (0, _react.useRef)(false);
 	var step = (0, _react.useRef)(0);
@@ -30,7 +36,16 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 	    height = _useState4[0],
 	    setHeight = _useState4[1];
 
+	/**@private
+  *	scroll an element smoothly
+  * @param {HTMLElement} el element to be scrolled
+  * @param {number} y number of pixels to be scrolled with
+  * @param {"top"|"down"} d direction of scrolling
+  */
+
+
 	var scroll = (0, _react.useCallback)(function (el, y, d) {
+
 		var direction = d ? d : el.scrollTop < y ? "down" : "up";
 		switch (direction) {
 			case "up":
