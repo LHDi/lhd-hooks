@@ -25,7 +25,10 @@
     "url": "https://github.com/lhd555/lhd-hooks/issues"
   },
   "homepage": "https://github.com/lhd555/lhd-hooks#readme",
-  "dependencies": {},
+  "dependencies": {
+		"resize-observer-polyfill": "^1.5.1",
+    "webrtc-adapter": "^7.4.0"
+	},
   "devDependencies": {
     "@babel/polyfill": "^7.8.3",
     "babel-cli": "^6.26.0",
@@ -40,15 +43,13 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "resize-observer-polyfill": "^1.5.1",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
-    "webrtc-adapter": "^7.4.0"
+		"webpack-dev-server": "^3.10.1"
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+		"react-dom": "^16.8.0" 
   }
 }
