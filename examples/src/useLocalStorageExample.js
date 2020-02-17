@@ -18,7 +18,7 @@ const style = {
 
 const UseLocalStorageExample = () => {
 	const input = useRef(null);
-	const [value, set, remove] = useLocalStorage('example');
+	const {value, set, remove} = useLocalStorage('example');
 	return (
 		<div id='localStorage'>
 			<span style={{display: 'block', textAlign: 'center'}}>{value}</span>
