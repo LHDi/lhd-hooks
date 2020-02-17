@@ -7,16 +7,17 @@ Object.defineProperty(exports, "__esModule", {
 var _react = require('react');
 
 /**
- * useSwipe hook
- * 
- * @param {
- * 	HTMLElement: ReactRef,
- * 	Handlers: {onSwipeUp, onSwipeDown, onSwipeLeft, onSwipeRight, onTouchMove},
- * 	delta: number
- * }
- * @returns {void}
+ *	useSwipe track one touch and excute the propriate callback each time
+ * @param {React.Element} Element
+ * @param {object} Handlers
+ * @param {function} Handlers.onSwipeDown the function to excute when swipe down excute when touch is done
+ * @param {function} Handlers.onSwipeUp the function to excute when swipe up excute when touch is done
+ * @param {function} Handlers.onSwipeLeft the function to excute when swipe left excute when touch is done
+ * @param {function} Handlers.onSwipeRight the function to excute when swipe right excute when touch is done
+ * @param {function} Handlers.onDistanceLessThanDelta the function to excute when swipe less then delta
+ * @param {function} Handlers.onTouchMove the function to excute when touch move
+ * @param {number} [delta=30]
  */
-
 var useSwipe = function useSwipe(Element, Handlers) {
 	var delta = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 30;
 
