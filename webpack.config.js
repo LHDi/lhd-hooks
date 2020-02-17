@@ -30,7 +30,22 @@ module.exports = {
 									}
 								}
 							]
-						}
+						},
+						{
+							test: /\.svg$/i,
+							use: 'raw-loader',
+						},
+						{
+							test: /\.(png|jpg|gif)$/i,
+							use: [
+								{
+									loader: 'url-loader',
+									options: {
+										limit: 8192,
+									},
+								},
+							],
+						},
         ]
     },
     plugins: [htmlWebpackPlugin],
@@ -38,6 +53,6 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
     devServer: {
-        port: 3001
+        port: 3001,
     }
 };

@@ -4,7 +4,14 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 //Here we're using resize observer pollyfill because we are not sure if it is implemented in the client browser
 import ResizeObserver from 'resize-observer-polyfill';
 
-const useSize = (ref) => {
+/**
+ * useSize take an element reference and return is size 
+ *	if no params was passed the hook will return the size of the body
+ * @param {React.Reference} [ref=null] a reference to the element
+ * @returns {Array} [width, height] of the element or the body
+ */
+const useSize = (ref = null) => {
+
 	//init dimentions with zeros
 	const [height, setHeight] = useState(0);
 	const [width, setWidth] = useState(0);

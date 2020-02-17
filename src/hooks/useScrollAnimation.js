@@ -6,13 +6,27 @@ import {
 } from 'react';
 import useSwipe from './useSwipe';
 
+/**
+ *	useScrollAnimation scroll one page at a time, every page takes the full height of the container
+ *	if no params was passed the hook will use the body
+ * @param {React.ref} ref - the reference to the element
+ * @returns {Array<number, function>} ReturnedArray = [index {number}, scrollTo {function}]
+ */
 const useScrollAnimation = (ref) => {
 	const scrolling = useRef(false);
 	const step = useRef(0);
 	const [index, setIndex] = useState(0);
 	const element = useRef(null);
 	const [height, setHeight] = useState(0);
-	const scroll = useCallback((el, y, d) => {		
+
+	/**@private
+	 *	scroll an element smoothly
+	 * @param {HTMLElement} el element to be scrolled
+	 * @param {number} y number of pixels to be scrolled with
+	 * @param {"top"|"down"} d direction of scrolling
+	 */
+	const scroll = useCallback((el, y, d) => {
+
 		const direction = d ? d : el.scrollTop < y ? "down" : "up";
 		switch (direction) {
 			case "up":
@@ -34,8 +48,6 @@ const useScrollAnimation = (ref) => {
 		}
 		return requestAnimationFrame(() => scroll(el, y, direction));
 	}, []);
-
-	
 
 	const scrollTo = useCallback((i) => {
 		if (scrolling.current) return;
