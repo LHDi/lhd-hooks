@@ -121,7 +121,7 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 			element.current = document.body;
 			setHeight(window.innerHeight);
 		};
-
+		element.current.style.overflowY = "hidden";
 		var onScroll = function onScroll(e) {
 			e.preventDefault();
 			if (e.deltaY > 0 && index < element.current.scrollHeight) {
