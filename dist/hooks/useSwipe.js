@@ -87,9 +87,9 @@ var useSwipe = function useSwipe(Element, Handlers) {
 	}, [delta, swipeDirection]);
 
 	(0, _react.useEffect)(function () {
+		if (!Element || !Element.current) return;
 		var current = Element.current;
 
-		if (!current) return;
 		current.addEventListener("touchstart", onTouchStart);
 		current.addEventListener("touchmove", onTouchMove);
 		current.addEventListener("touchend", onTouchEnd);
