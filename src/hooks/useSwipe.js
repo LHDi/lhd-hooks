@@ -72,8 +72,8 @@ const useSwipe = (Element, Handlers, delta = 30) => {
 	}, [delta, swipeDirection]);
 
 	useEffect(() => {
+        if(!Element || !Element.current) return;
 		const {current} = Element;
-		if(!current) return;		
 		current.addEventListener("touchstart", onTouchStart);
 		current.addEventListener("touchmove", onTouchMove);
 		current.addEventListener("touchend", onTouchEnd);
