@@ -45,21 +45,24 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 
 
 	var scroll = (0, _react.useCallback)(function (el, y, d) {
-
+		scrolling.current = true;
 		var direction = d ? d : el.scrollTop < y ? "down" : "up";
 		switch (direction) {
 			case "up":
 				el.scrollTop -= ++step.current;
 				if (el.scrollTop <= y) {
+
 					step.current = 0;
-					return el.scrollTop = y;
+					el.scrollTop = y;
+					return scrolling.current = false;
 				}
 				break;
 			case "down":
 				el.scrollTop += ++step.current;
 				if (el.scrollTop >= y) {
 					step.current = 0;
-					return el.scrollTop = y;
+					el.scrollTop = y;
+					return scrolling.current = false;
 				}
 				break;
 			default:
@@ -71,8 +74,6 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 	}, []);
 
 	var scrollTo = (0, _react.useCallback)(function (i) {
-		if (scrolling.current) return;
-		scrolling.current = true;
 		var el = element.current,
 		    h = height;
 
@@ -80,7 +81,7 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 			scroll(el, i * h);
 			setIndex(i);
 		}
-		scrolling.current = false;
+		//scrolling.current = false;
 	}, [height, scroll]);
 
 	(0, _useSwipe2.default)(ref, {
@@ -124,10 +125,12 @@ var useScrollAnimation = function useScrollAnimation(ref) {
 		element.current.style.overflowY = "hidden";
 		var onScroll = function onScroll(e) {
 			e.preventDefault();
-			if (e.deltaY > 0 && index < element.current.scrollHeight) {
+			var direction = Math.abs(e.deltaY) >= 40 ? e.deltaY < 0 ? 'up' : 'down' : false;
+			if (scrolling.current || !direction) return;
+			if (direction === 'down' && index < element.current.scrollHeight) {
 				// downscroll code
 				scrollTo(index + 1);
-			} else if (e.deltaY < 0 && index > 0) {
+			} else if (direction === 'up' && index > 0) {
 				// upscroll code
 				scrollTo(index - 1);
 			}
