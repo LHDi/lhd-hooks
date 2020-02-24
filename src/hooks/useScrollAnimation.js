@@ -25,22 +25,25 @@ const useScrollAnimation = (ref) => {
 	 * @param {number} y number of pixels to be scrolled with
 	 * @param {"top"|"down"} d direction of scrolling
 	 */
-	const scroll = useCallback((el, y, d) => {
-
+	const scroll = useCallback((el, y, d) => {		
+		scrolling.current = true;
 		const direction = d ? d : el.scrollTop < y ? "down" : "up";
 		switch (direction) {
 			case "up":
 				el.scrollTop -= ++step.current;
 				if (el.scrollTop <= y) {
+
 					step.current = 0;
-					return el.scrollTop = y;
+					el.scrollTop = y;
+					return scrolling.current = false;
 				}
 				break;
 			case "down":
 				el.scrollTop += ++step.current;
 				if (el.scrollTop >= y) {
 					step.current = 0;
-					return el.scrollTop = y;
+					el.scrollTop = y;
+					return scrolling.current = false;
 				}
 				break;
 			default:
@@ -50,8 +53,6 @@ const useScrollAnimation = (ref) => {
 	}, []);
 
 	const scrollTo = useCallback((i) => {
-		if (scrolling.current) return;
-		scrolling.current = true;
 		const el = element.current,
 		h = height;
 		
@@ -59,7 +60,7 @@ const useScrollAnimation = (ref) => {
 			scroll(el, i * h);
 			setIndex(i);
 		}
-		scrolling.current = false;
+		//scrolling.current = false;
 	}, [height, scroll])
 
 	useSwipe(ref, {
@@ -98,13 +99,15 @@ const useScrollAnimation = (ref) => {
 			element.current = document.body;
 			setHeight(window.innerHeight);
 		};
-        element.current.style.overflowY = "hidden";
+		element.current.style.overflowY = "hidden";
 		const onScroll = (e) => {
 			e.preventDefault();
-			if (e.deltaY > 0 && index < element.current.scrollHeight) {
+			const direction = Math.abs(e.deltaY) >= 40?e.deltaY<0?'up':'down':false;
+			if (scrolling.current || !direction) return;
+			if (direction === 'down' && index < element.current.scrollHeight) {
 				// downscroll code
 				scrollTo(index + 1);
-			} else if (e.deltaY < 0 && index > 0) {
+			} else if (direction === 'up' && index > 0) {
 				// upscroll code
 				scrollTo(index - 1);
 			}

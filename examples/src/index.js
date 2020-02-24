@@ -11,6 +11,7 @@ import useLoadingPercentage from '../../src/hooks/useLoadingPercentage';
 import UseFormStateExample from './useFormStateExample';
 import UsePortalExample from './usePortalExample';
 import UsePlaceholderExample from './usePlaceholderExample';
+import UseScrollAnimationExample from './useScrollAnimationExample';
 
 const style = {
 	topNav: {
@@ -51,6 +52,7 @@ const Nav = () => {
 			<Link to="/useFormState">useFormState</Link>
 			<Link to="/usePortal">usePortal</Link>
 			<Link to="/usePlaceholder">usePlaceHolder</Link>
+			<Link to="/useScrollAnimation">useScrollAnimation</Link>
 			<span onClick={() => setOpen(!open)} style={style.trigger}>&#9661;</span>
 		</nav>
 	)
@@ -84,6 +86,8 @@ const UseExample = () => {
 						return <UsePortalExample />
 					case 'usePlaceholder':
 						return <UsePlaceholderExample />
+					case 'useScrollAnimation':
+						return <UseScrollAnimationExample />
 					default:
 						return null;
 				}
