@@ -45,9 +45,7 @@ var _usePortal = require("./hooks/usePortal");
 
 var _usePortal2 = _interopRequireDefault(_usePortal);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.useOnClickOutside = _useOnClickOutside2.default;
 exports.useSwipe = _useSwipe2.default;
