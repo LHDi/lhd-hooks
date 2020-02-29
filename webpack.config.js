@@ -1,58 +1,58 @@
 /*** webpack.config.js ***/
-const path = require('path');
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-    template: path.join(__dirname, "examples/src/index.html"),
-    filename: "./index.html"
+  template: path.join(__dirname, "examples/src/index.html"),
+  filename: "./index.html"
 });
 module.exports = {
-		entry: path.join(__dirname, "examples/src/index.js"),
-		output: {
-			path: path.join(__dirname, "examples/dist"),
-			filename: "bundle.js"
-		},
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                use: "babel-loader",
-                exclude: /node_modules/
-            },
-						{
-							test: /\.css$/,
-							use: [
-								'style-loader',
-								{
-									loader: 'css-loader',
-									options: {
-										importLoaders: 1,
-										modules: true
-									}
-								}
-							]
-						},
-						{
-							test: /\.svg$/i,
-							use: 'raw-loader',
-						},
-						{
-							test: /\.(png|jpg|gif)$/i,
-							use: [
-								{
-									loader: 'url-loader',
-									options: {
-										limit: 8192,
-									},
-								},
-							],
-						},
+  entry: path.join(__dirname, "examples/src/index.js"),
+  output: {
+    path: path.join(__dirname, "examples/dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          }
         ]
-    },
-    plugins: [htmlWebpackPlugin],
-    resolve: {
-        extensions: [".js", ".jsx"]
-    },
-    devServer: {
-        port: 3001,
-    }
+      },
+      {
+        test: /\.svg$/i,
+        use: "raw-loader"
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [htmlWebpackPlugin],
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
+  devServer: {
+    port: 3001
+  }
 };

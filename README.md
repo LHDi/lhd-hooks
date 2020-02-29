@@ -2,9 +2,9 @@
 
 LHD HOOKS is a set of react hooks ready for usage.
 
-  - install
-  - import
-  - use!
+- install
+- import
+- use!
 
 ### Installation
 
@@ -22,13 +22,16 @@ import hook in components:
 ```sh
 import {useSwipe} from 'lhd-hooks';
 ```
+
 [demo](https://lhd555.github.io/lhd-hooks/)
 use the mobile version!
 
 # Contribution
+
 You can also help by:
-  - Add new hooks.
-  - Suggest hook ideas.
-  - Improve existing hooks.
+
+- Add new hooks.
+- Suggest hook ideas.
+- Improve existing hooks.
 
 Feel free to contribute.
