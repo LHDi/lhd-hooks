@@ -56,29 +56,30 @@ var useScrollAnimation = function useScrollAnimation() {
    * @param {HTMLElement} el element to be scrolled
    * @param {number} y number of pixels to be scrolled with
    * @param {"top"|"down"} d direction of scrolling
+   * @param {number} s start point
    */
 
 
-  var scroll = (0, _react.useCallback)(function (el, y, d) {
+  var scroll = (0, _react.useCallback)(function (el, y, d, s) {
     scrolling.current = true;
     var direction = d ? d : el.scrollTop < y ? "down" : "up";
+    var start = s ? s : el.scrollTop;
+    // reset the timing if it's the first time
     time.current = d ? time.current : 0;
-    time.current += 1 / 60;
+    time.current += 1 / (60 * duration);
     switch (direction) {
       case "up":
-        // y + height (start point)
-        el.scrollTop = y + height - height * easeInOutQuad(time.current);
+        // start (start point)
+        el.scrollTop = start - height * easeInOutQuad(time.current);
         if (el.scrollTop <= y) {
-          time.current = 0;
           el.scrollTop = y;
           return scrolling.current = false;
         }
         break;
       case "down":
-        // y - height (start point)
-        el.scrollTop = y - height + height * easeInOutQuad(time.current);
+        // start (start point)
+        el.scrollTop = start + height * easeInOutQuad(time.current);
         if (el.scrollTop >= y) {
-          time.current = 0;
           el.scrollTop = y;
           return scrolling.current = false;
         }
@@ -87,7 +88,7 @@ var useScrollAnimation = function useScrollAnimation() {
         return;
     }
     return requestAnimationFrame(function (t) {
-      return scroll(el, y, direction, t);
+      return scroll(el, y, direction, start);
     });
   }, [height]);
 
