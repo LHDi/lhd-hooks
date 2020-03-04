@@ -47,7 +47,9 @@ var usePortal = function usePortal() {
   var setPortal = (0, _react.useCallback)(function (ref) {
     if (!ref) return;
     Portal.current = ref;
-    Portal.current.style.cssText += "\n\t\t\tposition: absolute;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t\t" + (open ? "visibility: visible; opacity: 1;" : "visibility: visible; opacity: 0;") + "\n\t\t\ttransition: .3s all ease-out\n\t\t";
+    Portal.current.style.cssText += "\n\t\t\tposition: absolute;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n    ";
+    Portal.current.parentElement.removeChild(Portal.current);
+    open && document.body.appendChild(Portal.current);
   }, []);
 
   var setTrigger = (0, _react.useCallback)(function (ref) {
@@ -60,8 +62,7 @@ var usePortal = function usePortal() {
   }, []);
 
   (0, _react.useEffect)(function () {
-    Portal.current.style.visibility = open ? "visible" : "hidden";
-    Portal.current.style.opacity = open ? "1" : "0";
+    if (open) document.body.appendChild(Portal.current);else if (Portal.current.parentElement === document.body) document.body.removeChild(Portal.current);
   }, [open]);
 
   //add event list when first mount and remove when unmount

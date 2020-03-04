@@ -26,13 +26,9 @@ const usePortal = ({
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			${
-        open
-          ? "visibility: visible; opacity: 1;"
-          : "visibility: visible; opacity: 0;"
-      }
-			transition: .3s all ease-out
-		`;
+    `;
+    Portal.current.parentElement.removeChild(Portal.current);
+    open && document.body.appendChild(Portal.current);
   }, []);
 
   const setTrigger = useCallback(ref => {
@@ -41,8 +37,9 @@ const usePortal = ({
   }, []);
 
   useEffect(() => {
-    Portal.current.style.visibility = open ? "visible" : "hidden";
-    Portal.current.style.opacity = open ? "1" : "0";
+    if (open) document.body.appendChild(Portal.current);
+    else if (Portal.current.parentElement === document.body)
+      document.body.removeChild(Portal.current);
   }, [open]);
 
   //add event list when first mount and remove when unmount
