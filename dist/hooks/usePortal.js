@@ -47,7 +47,7 @@ var usePortal = function usePortal() {
   var setPortal = (0, _react.useCallback)(function (ref) {
     if (!ref) return;
     Portal.current = ref;
-    Portal.current.style.cssText += "\n\t\t\tposition: absolute;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n    ";
+    Portal.current.style.cssText += "\n\t\t\tposition: fixed;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n    ";
     Portal.current.parentElement.removeChild(Portal.current);
     open && document.body.appendChild(Portal.current);
   }, []);
