@@ -62,7 +62,7 @@ var usePortal = function usePortal() {
   }, []);
 
   (0, _react.useEffect)(function () {
-    if (open) document.body.appendChild(Portal.current);else if (Portal.current.parentElement === document.body) document.body.removeChild(Portal.current);
+    if (open && Portal.current.parentElement !== document.body) document.body.appendChild(Portal.current);else if (!open && Portal.current.parentElement === document.body) document.body.removeChild(Portal.current);
   }, [open]);
 
   //add event list when first mount and remove when unmount
