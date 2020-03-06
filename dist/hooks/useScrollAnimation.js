@@ -64,13 +64,14 @@ var useScrollAnimation = function useScrollAnimation() {
     scrolling.current = true;
     var direction = d ? d : el.scrollTop < y ? "down" : "up";
     var start = s ? s : el.scrollTop;
+    var distance = Math.round(Math.abs(y - start));
     // reset the timing if it's the first time
     time.current = d ? time.current : 0;
     time.current += 1 / (60 * duration);
     switch (direction) {
       case "up":
         // start (start point)
-        el.scrollTop = start - height * easeInOutQuad(time.current);
+        el.scrollTop = start - distance * easeInOutQuad(time.current);
         if (el.scrollTop <= y) {
           el.scrollTop = y;
           return scrolling.current = false;
@@ -78,7 +79,7 @@ var useScrollAnimation = function useScrollAnimation() {
         break;
       case "down":
         // start (start point)
-        el.scrollTop = start + height * easeInOutQuad(time.current);
+        el.scrollTop = start + distance * easeInOutQuad(time.current);
         if (el.scrollTop >= y) {
           el.scrollTop = y;
           return scrolling.current = false;
