@@ -94,11 +94,12 @@ var useScrollAnimation = function useScrollAnimation() {
 
   var scrollTo = (0, _react.useCallback)(function (i) {
     var el = element.current,
-        h = height;
+        h = height,
+        ind = i instanceof Function ? i(Math.round(element.current.scrollTop / height)) : i;
 
-    if (i >= 0 && i * h <= el.scrollHeight - h) {
-      scroll(el, i * h);
-      setIndex(i);
+    if (ind >= 0 && ind * h <= el.scrollHeight - h) {
+      scroll(el, ind * h);
+      setIndex(ind);
     }
   }, [height, scroll]);
 
@@ -148,10 +149,14 @@ var useScrollAnimation = function useScrollAnimation() {
       if (scrolling.current || !direction) return;
       if (direction === "down" && index < element.current.scrollHeight) {
         // downscroll code
-        scrollTo(index + 1);
+        scrollTo(function (i) {
+          return i + 1;
+        });
       } else if (direction === "up" && index > 0) {
         // upscroll code
-        scrollTo(index - 1);
+        scrollTo(function (i) {
+          return i - 1;
+        });
       }
     };
 

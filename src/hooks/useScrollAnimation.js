@@ -63,11 +63,12 @@ const useScrollAnimation = (
   const scrollTo = useCallback(
     i => {
       const el = element.current,
-        h = height;
-
-      if (i >= 0 && i * h <= el.scrollHeight - h) {
-        scroll(el, i * h);
-        setIndex(i);
+        h = height,
+        ind = i instanceof Function ? i(Math.round(element.current.scrollTop / height)) : i;
+      
+      if (ind >= 0 && ind * h <= el.scrollHeight - h) {
+        scroll(el, ind * h);
+        setIndex(ind);
       }
     },
     [height, scroll]
@@ -129,10 +130,10 @@ const useScrollAnimation = (
       if (scrolling.current || !direction) return;
       if (direction === "down" && index < element.current.scrollHeight) {
         // downscroll code
-        scrollTo(index + 1);
+        scrollTo(i => (i + 1));
       } else if (direction === "up" && index > 0) {
         // upscroll code
-        scrollTo(index - 1);
+        scrollTo(i => (i - 1));
       }
     };
 
