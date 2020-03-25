@@ -55,7 +55,7 @@ const usePortal = ({
     return () => window.addEventListener("keyup", closeOnESCHandler);
   }, []);
 
-  return { setPortal, setTrigger, openPortal: setOpen };
+  return { setPortal, setTrigger, openPortal: () => setOpen(true) };
 };
 
 export default usePortal;

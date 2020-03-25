@@ -79,7 +79,9 @@ var usePortal = function usePortal() {
     };
   }, []);
 
-  return { setPortal: setPortal, setTrigger: setTrigger, openPortal: setOpen };
+  return { setPortal: setPortal, setTrigger: setTrigger, openPortal: function openPortal() {
+      return setOpen(true);
+    } };
 };
 
 exports.default = usePortal;
