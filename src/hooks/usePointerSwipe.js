@@ -36,6 +36,7 @@ if (window.PointerEvent || window.navigator.msPointerEnabled) {
  */
 export default function SwipeRevealItem(ref, selector, callback, threshold) {
   const targetElement = ref.current ? ref.current : ref;
+  targetElement.style.touchAction = "none";
   // Gloabl state variables
   var STATE_DEFAULT = 0;
   var STATE_LEFT_SIDE = -1;
@@ -183,10 +184,7 @@ export default function SwipeRevealItem(ref, selector, callback, threshold) {
     swipeFrontElement.style.webkitTransform = "translateX(0px)";
     swipeFrontElement.style.transform = "translateX(0px)";
     newState = callback(newState);
-    if (![-1, 0, 1].includes(newState))
-      throw new Error(
-        "The callback function needs to return either -1, 1 or 0"
-      );
+    if (![-1, 0, 1].includes(newState)) newState = 0;
     if (newState === 0) currentXPosition = 0;
     currentState = newState;
   }

@@ -22,13 +22,14 @@ export default function () {
         justifyContent: "center",
         width: "100vw",
         marginTop: "100px",
+        height: 500,
       }}
     >
       <div
         className="text"
         style={{ padding: "20px", borderRadius: 6, backgroundColor: "navy" }}
       >
-        <p>Text to swipe right or left</p>
+        Text to swipe right or left
       </div>
     </div>
   );
