@@ -1,10 +1,7 @@
-import React, {useRef} from 'react';
-import { render} from 'react-dom';
-import UseSizeExample from './useSizeExample';
+import React, { useRef } from "react";
+import { render } from "react-dom";
+import UsePointerSwipe from "./usePointerSwipe";
 const App = () => {
-	
-	return (
-		<UseSizeExample />
-	)
+  return <UsePointerSwipe />;
 };
 render(<App />, document.getElementById("root"));
